@@ -1,0 +1,20 @@
+version: "3"
+
+services:
+  monero_cuda:
+    container_name: monero_cuda
+    image: monero_cuda_local:latest 
+    runtime: nvidia
+    privileged: true
+    ports:
+      - "3000:3000"
+    volumes:
+      - "./miner_data:/tmp"
+      - "/lib/modules:/lib/modules"
+    environment:
+      - log-file=/tmp/xmrig.log
+      - XMRIG_VER=6.12.2-mo2
+      - XMRIG_CUDA_VER=6.12.0
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=compute,utility
+

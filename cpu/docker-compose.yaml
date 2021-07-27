@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  monero_cpu:
+    container_name: monero_cpu
+    image: monero_cpu_local:latest 
+    privileged: true
+    ports:
+      - "3000:3000"
+    volumes:
+      - "./miner_data:/tmp"
+      - "/lib/modules:/lib/modules"
+    environment:
+      - log-file=/tmp/xmrig.log
+      - XMRIG_VER=6.12.2-mo2
+      - XMRIG_CUDA_VER=6.12.0
+
