@@ -1,0 +1,1 @@
+#xmrig_docker
